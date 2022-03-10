@@ -20,6 +20,9 @@ jobs:
           command: pip install -r requirements.txt
           name: Package installation
       - run:
+          command: source ~/etavenv/bin/activate
+          name: Activating virtual env
+      - run:
           command: chmod +x manage.py
           name: Making manage.py executable
       - run:
