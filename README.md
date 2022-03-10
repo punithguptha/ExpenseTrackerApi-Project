@@ -7,4 +7,4 @@ All these are implemented in Django Rest Framework
 
 The etvenv is the virtual env that is used for this project
 
-<!-- TESTING -->
+<!-- For Testing purposes -->
