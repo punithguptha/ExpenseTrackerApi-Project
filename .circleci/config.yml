@@ -13,9 +13,9 @@ jobs:
     executor: python/default
     steps:
       - checkout
-      - run:
-          command: source ./etavenv/bin/activate
-          name: Activating virtual env
+      # - run:
+      #     command: source ./etavenv/bin/activate
+      #     name: Activating virtual env
       # - run: chmod +x manage.py
       - python/load-cache
       - python/install-deps
