@@ -20,7 +20,10 @@ jobs:
           command: pip install -r requirements.txt
           name: Package installation
       - run:
-          command: python manage.py test
+          command: chmod +x manage.py
+          name: Making manage.py executable
+      - run:
+          command: ./manage.py test
           name: Test
 
 workflows:
