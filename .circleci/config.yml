@@ -14,7 +14,7 @@ jobs:
     steps:
       - checkout
       - run:
-          command: source /etavenv/bin/activate
+          command: source . /etavenv/bin/activate
           name: Activating virtual env
       # - run: chmod +x manage.py
       - python/load-cache
