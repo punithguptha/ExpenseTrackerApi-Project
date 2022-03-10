@@ -5,14 +5,23 @@ orbs:
 
 jobs:
   build-and-test:
+    # These need to be specifically mentioned, otherwise circle ci throws an error
+    environment:
+      SECRET_KEY: somesecretkey
+      EMAIL_HOST_USER: someuser@gmail.com
+      EMAIL_HOST_PASSWORD: sometestpassword
     executor: python/default
     steps:
       - checkout
+      - run:
+          command: source ../etavenv/bin/activate
+          name: Activating virtual env
+      # - run: chmod +x manage.py
       - python/load-cache
       - python/install-deps
       - python/save-cache
       - run:
-          command: ./manage.py test
+          command: python manage.py test
           name: Test
 
 workflows:
