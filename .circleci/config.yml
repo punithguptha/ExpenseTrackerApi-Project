@@ -14,14 +14,17 @@ jobs:
     steps:
       - checkout
       - run:
-          command: source /etavenv/bin/activate
-          name: Activating virtual env
-      # - run: chmod +x manage.py
+          command: pip install -r requirements.txt
+          name: Package installation
+      - run:
+          command: chmod +x manage.py
+          name: Making manage.py executable
+
       - python/load-cache
       - python/install-deps
       - python/save-cache
       - run:
-          command: python manage.py test
+          command: ./manage.py test
           name: Test
 
 workflows:
