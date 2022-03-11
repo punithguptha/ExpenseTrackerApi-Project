@@ -39,7 +39,16 @@ class LoginSerializer(serializers.ModelSerializer):
     password=serializers.CharField(max_length=68,min_length=6,write_only=True)
     username=serializers.CharField(max_length=255,read_only=True)
     email=serializers.EmailField(max_length=255)
-    tokens=serializers.CharField(max_length=500,read_only=True)
+    # Serializer method field..This takes a function name as param..If that is not mentioned we need to define a method with format as "get_variablename"
+    # In this case the method would be get_tokens
+    tokens=serializers.SerializerMethodField()
+
+    def get_tokens(self,instance):
+        user=User.objects.get(email=instance['email'])
+        return {
+            'access_token': user.tokens()['access_token'],
+            'refresh_token':user.tokens()['refresh_token']
+        }
 
     class Meta:
         model=User
